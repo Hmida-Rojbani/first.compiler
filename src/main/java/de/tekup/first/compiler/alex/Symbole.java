@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UnityLexical {
+public class Symbole {
 	
-	private String lexeme;
+	private String unityLex;
 	private String attribut;
 	private int val;
 	private double valRel;
