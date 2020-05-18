@@ -11,7 +11,6 @@ public class AnalyseLex {
 		Symbole sb = null;
 		while (index < data.length()) {
 			char c = data.charAt(index);
-			System.out.println("c : "+c);
 			if( c == ' ' || c == '\t' || c== '\n'){
 				index ++;
 			}else if (Character.isAlphabetic(c) ) {
@@ -96,6 +95,7 @@ public class AnalyseLex {
 					etat =2;
 					sb.setUnityLex("opaff");
 					sb.setAttribut(":=");
+					sb.setLex(":=");
 					break;
 				}
 				else {
@@ -103,6 +103,7 @@ public class AnalyseLex {
 					
 					sb.setUnityLex("sep");
 					sb.setAttribut(":");
+					sb.setLex(":");
 					index --;
 				}
 
@@ -124,7 +125,8 @@ public class AnalyseLex {
 				if(c  == '+') {
 					etat = 1;
 					sb.setUnityLex("oparth");
-					sb.setAttribut("+");
+					sb.setAttribut("add");
+					sb.setLex("+");
 
 				}
 				break;
@@ -146,7 +148,8 @@ public class AnalyseLex {
 				if(c  == '-') {
 					etat = 1;
 					sb.setUnityLex("oparth");
-					sb.setAttribut("-");
+					sb.setAttribut("soustr");
+					sb.setLex("-");
 
 				}
 				break;
@@ -168,7 +171,8 @@ public class AnalyseLex {
 				if(c  == '*') {
 					etat = 1;
 					sb.setUnityLex("oparth");
-					sb.setAttribut("*");
+					sb.setAttribut("mul");
+					sb.setLex("*");
 
 
 				}
@@ -191,7 +195,8 @@ public class AnalyseLex {
 				if(c  == '/') {
 					etat = 1;
 					sb.setUnityLex("oparth");
-					sb.setAttribut("/");
+					sb.setAttribut("div");
+					sb.setLex("/");
 
 
 				}
@@ -215,6 +220,7 @@ public class AnalyseLex {
 					etat = 1;
 					sb.setUnityLex("oprel");
 					sb.setAttribut("EGA");
+					sb.setLex("=");
 
 
 				}
@@ -238,6 +244,7 @@ public class AnalyseLex {
 					etat = 1;
 					sb.setUnityLex("sep");
 					sb.setAttribut(";");
+					sb.setLex(";");
 
 
 				}
@@ -261,6 +268,7 @@ public class AnalyseLex {
 					etat = 1;
 					sb.setUnityLex("sep");
 					sb.setAttribut("(");
+					sb.setLex("(");
 
 
 				}
@@ -284,6 +292,7 @@ public class AnalyseLex {
 					etat = 1;
 					sb.setUnityLex("sep");
 					sb.setAttribut(")");
+					sb.setLex(")");
 
 
 				}
@@ -324,6 +333,7 @@ public class AnalyseLex {
 					
 					sb.setUnityLex("oprel");
 					sb.setAttribut("PPQ");
+					sb.setLex("<");
 					index --;
 				}
 
@@ -333,6 +343,7 @@ public class AnalyseLex {
 				
 				sb.setUnityLex("oprel");
 				sb.setAttribut("PPE");
+				sb.setLex("<=");
 				index --;
 				break;
 			case 3:
@@ -340,6 +351,7 @@ public class AnalyseLex {
 				
 				sb.setUnityLex("oprel");
 				sb.setAttribut("DIF");
+				sb.setLex("<>");
 				index --;
 				break;
 			}
@@ -374,6 +386,7 @@ public class AnalyseLex {
 					
 					sb.setUnityLex("oprel");
 					sb.setAttribut("PGQ");
+					sb.setLex(">");
 					index --;
 				}
 
@@ -382,6 +395,7 @@ public class AnalyseLex {
 				etat = 3;
 				
 				sb.setUnityLex("oprel");
+				sb.setLex(">=");
 				sb.setAttribut("PGE");
 				index --;
 				break;
@@ -416,6 +430,7 @@ public class AnalyseLex {
 					etat = 3;
 					
 					sb.setUnityLex("nb");
+					sb.setLex("nb");
 					sb.setVal(Integer.parseInt(lexem.toString()));
 					index --;
 				}
@@ -430,6 +445,7 @@ public class AnalyseLex {
 					etat = 3;
 					
 					sb.setUnityLex("nbr");
+					sb.setLex("nbr");
 					sb.setValRel(Double.parseDouble(lexem.toString()));
 					index --;
 				}
@@ -469,10 +485,12 @@ public class AnalyseLex {
 					if (KeyWord.in(lexem.toString())) {
 						sb.setUnityLex("keyWord");
 						sb.setAttribut(lexem.toString());
+						sb.setLex(lexem.toString());
 						sb.setRangeId(-1);
 					} else {
 						sb.setUnityLex("id");
 						sb.setAttribut(lexem.toString());
+						sb.setLex("id");
 						sb.setRangeId(Ids.add(lexem.toString()));
 					}
 					

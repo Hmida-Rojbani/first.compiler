@@ -14,5 +14,6 @@ public class Symbole {
 	private String attribut;
 	private int val;
 	private double valRel;
+	private String lex;
 
 }
