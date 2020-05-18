@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class Symbole {
 	
 	private String unityLex;
+	private int rangeId;
 	private String attribut;
 	private int val;
 	private double valRel;
